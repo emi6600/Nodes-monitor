@@ -4,10 +4,10 @@ const nodesArray = [
 {NodeName:"Bucurosul",NodeAddress:"0xa470BF88347069357C7DdE1c3E0361545190d2AE"},
 {NodeName:"Galagie",NodeAddress:"0xe785E23708A8060bbE48f39d1f76ec93D11F57BE"},
 {NodeName:"Fourteen",NodeAddress:"0x174ED2dF4FceBb52ed96F159Efe9078a8Da8D61D"},
-
 {NodeName:"Nodurosu' Y",NodeAddress:"0x75B04096DB9BE141c76b6667a34E1f07dA1D52d7"},
 {NodeName:"Nod16",NodeAddress:"0x2419136d950221317637aD074F4Cde0f21F57e3a"},
 {NodeName:"Inteleptul",NodeAddress:"0x58122A9f23E70061a1FD40A13a2C1F66c903dd0e"},
+
 
 ];
 
