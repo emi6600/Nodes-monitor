@@ -1,0 +1,39 @@
+table,
+th,
+td {
+  border: 1px solid #2B547E;
+  text-align: center;
+  border-radius: 2px;
+  padding: 8px;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+th {
+  background-color: #0C2D48;
+  color: #fff;
+}
+
+.node-name {
+  width: 30%;
+}
+
+.node-address {
+  width: 65%;
+}
+
+.last-contract {
+  width: 5%;
+}
+
+.red-text {
+  color: red;
+}
+
+body {
+  background-image: url("https://i.ibb.co/BHpDzXj/istockphoto-505487687-170667a.webp");
+  background-attachment: fixed;
+  background-size: cover;
+}
