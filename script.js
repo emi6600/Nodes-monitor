@@ -8,8 +8,7 @@ const nodesArray = [
 {NodeName:"Nod16",NodeAddress:"0x2419136d950221317637aD074F4Cde0f21F57e3a"},
 {NodeName:"Last but not least",NodeAddress:"0x8BBaB346DC094b02Ca7a5448650621CCb56046b1"},
 {NodeName:"Inteleptul",NodeAddress:"0x58122A9f23E70061a1FD40A13a2C1F66c903dd0e"},
-{NodeName:"Reward3",NodeAddress:"0x60c0341cfb542a0e7a171cfe64c21ea256b4b43a"},
-
+{NodeName:"Reward 2",NodeAddress:"0x55E81C41105f53601EcAFB08592102e1DFDB1836"},
 
 
 ];
