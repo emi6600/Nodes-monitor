@@ -53,3 +53,68 @@ window.addEventListener("DOMContentLoaded", async function () {
     }
   }
 })();
+// Funția pentru afișarea notificării
+function showNotification() {
+  // Verificăm dacă browser-ul suportă notificările
+  if (!("Notification" in window)) {
+    console.log("Notificările nu sunt suportate de acest browser.");
+    return;
+  }
+
+  // Verificăm dacă utilizatorul a dat permisiunea pentru notificări
+  if (Notification.permission === "granted") {
+    // Construim mesajul notificării
+    const notificationOptions = {
+      body: "Un nod nu a avut contract call în ultimele 20 de ore!",
+      icon: "path_to_notification_icon.png" // Schimbă calea către iconița notificării
+    };
+
+    // Afișăm notificarea
+    const notification = new Notification("NodesMonitor", notificationOptions);
+
+    // Deschidem link-ul în browser atunci când utilizatorul face clic pe notificare
+    notification.onclick = function () {
+      window.open("https://blockexplorer.bloxberg.org/");
+    };
+  } else if (Notification.permission !== "denied") {
+    // Dacă utilizatorul nu a dat permisiunea, solicităm permisiunea
+    Notification.requestPermission().then(function (permission) {
+      // Dacă permisiunea este acordată, afișăm notificarea
+      if (permission === "granted") {
+        showNotification();
+      }
+    });
+  }
+}
+
+// Adăugăm verificarea pentru fiecare nod în funcția existentă
+document.addEventListener("DOMContentLoaded", async function () {
+  const nodesWithTransactions = await Promise.all(nodesArray.map(fetchTransactions));
+  const tableBody = document.getElementById("nodesTable");
+  nodesWithTransactions.forEach(node => {
+    const row = document.createElement("tr");
+    const nodeNameCell = document.createElement("td");
+    const nodeAddressCell = document.createElement("td");
+    const lastCallCell = document.createElement("td");
+
+    nodeNameCell.textContent = node.nodeName;
+
+    const nodeAddressLink = document.createElement("a");
+    nodeAddressLink.href = `https://blockexplorer.bloxberg.org/address/${node.nodeAddress}`;
+    const nodeAddressText = window.innerWidth < window.innerHeight
+      ? `${node.nodeAddress.substr(0, 5)}...${node.nodeAddress.substr(-5)}`
+      : node.nodeAddress;
+    nodeAddressLink.textContent = nodeAddressText;
+    nodeAddressCell.appendChild(nodeAddressLink);
+
+    lastCallCell.textContent = node.lastTransactionTime || "Last Hour";
+    if (node.lastTransactionTime > 20) {
+      lastCallCell.classList.add("r");
+      // Verificăm dacă nodul depășește 20 de ore și afișăm notificarea
+      showNotification();
+    }
+
+    row.append(nodeNameCell, nodeAddressCell, lastCallCell);
+    tableBody.append(row);
+  });
+});
